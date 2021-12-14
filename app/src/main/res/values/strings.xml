@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">runningApp</string>
+    <string name="google_maps_key">AIzaSyBHc7quuqV4lY5wap_R3iWQ15FqbiyCXRk</string>
 </resources>
