@@ -35,7 +35,7 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
         private fun loadFieldsFromSharedPreferences() {
             val name = sharedPreference.getString(Constants.KEY_NAME, "")
-            val weight = sharedPreference.getFloat(Constants.KEY_WEIGHT, 80f)
+            var weight = sharedPreference.getFloat(Constants.KEY_WEIGHT, 80f)
             etName.setText(name)
             etWeight.setText(weight.toString())
         }

@@ -49,7 +49,8 @@ class SetupFragment: Fragment(R.layout.fragment_setup) {
 
         tvContinue.setOnClickListener {
             val success = writePersonalDataToSharedPref()
-            (activity as MainActivity?)?.setActionBarTitle(name)
+            val toolBaRText = "Let's go $name!"
+            (activity as MainActivity?)?.setActionBarTitle(toolBaRText)
 
             if(success){
                 findNavController().navigate(R.id.action_setupFragment_to_runFragment)
@@ -74,9 +75,6 @@ class SetupFragment: Fragment(R.layout.fragment_setup) {
             .putFloat(KEY_WEIGHT, weight.toFloat()) // no need to check whether it can be convert to float as we used type of the input as decimals
             .putBoolean(KEY_FIRST_TIME_TOGGLE, false) // not the first time of launching the application
             .apply()
-
-        val toolBaRText = "Let's go $name!"
-
 
 
         return true
