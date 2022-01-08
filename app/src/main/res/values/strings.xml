@@ -1,3 +1,26 @@
 <resources>
-    <string name="app_name">runningApp</string>
+    <string name="app_name">Running App</string>
+    <string name="run_nav">Your Runs</string>
+    <string name="stat_nav">Statistics</string>
+    <string name="setting_nav">Settings</string>
+    <string name="google_maps_key">AIzaSyBHc7quuqV4lY5wap_R3iWQ15FqbiyCXRk</string>
+    <string name="cancel_menu">Cancel Run</string>
+    <string name="continue_txt">Continue</string>
+    <string name="start_txt">Start</string>
+    <string name="finish_txt">Finish Run</string>
+    <string name="welcome_txt">Welcome!\nPlease enter your name and weight.</string>
+    <string name="weight_hint_txt">Your Weight(kg)</string>
+    <string name="name_hint_text">Your Name</string>
+    <string name="tot_time_txt">Total Time</string>
+    <string name="tot_distance_txt">Total Distance</string>
+    <string name="tot_calories_txt">Total Calories Burned</string>
+    <string name="avg_speed_txt">Average Speed</string>
+    <string name="apply_changes_txt">Apply Changes</string>
+    <string-array name="filter_options">
+        <item>Date</item>
+        <item>Running Time</item>
+        <item>Distance</item>
+        <item>Average Speed</item>
+        <item>Calories Burned</item>
+    </string-array>
 </resources>
