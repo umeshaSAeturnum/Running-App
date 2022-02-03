@@ -42,7 +42,7 @@ import timber.log.Timber
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-//Normally a service class is inherit from Service or InheritService
+//Normally a service class is inherit from Service or IntentService
 //in here it is inherit from LifecycleService
 // that is bcz we want to observe from live data object inside this class
 //observer function of the LiveData objects need the lifecycle owner
@@ -91,9 +91,10 @@ class TrackingService : LifecycleService() {
         timeRunInMillis.postValue(0L)
     }
 
+    //onCreate() is called only for the first time we start a service
     override fun onCreate() {
         super.onCreate()
-        //initialize witht eh baseNotificationBUilder and sometimes passes change the text pf the curNotificationBuilder and shows the notification
+        //initialize with the baseNotificationBUilder and sometimes passes change the text pf the curNotificationBuilder and shows the notification
         curNotificationBuilder = baseNotificationBuilder
         postInitialValues()
         fusedLocationProviderClient = FusedLocationProviderClient(this)
@@ -150,9 +151,11 @@ class TrackingService : LifecycleService() {
         return super.onStartCommand(intent, flags, startId)
     }
     //a callback that gives the location updates consistently
+    //when the location changes it provides updates
     val locationCallback = object: LocationCallback(){
         override fun onLocationResult(result: LocationResult?) {
             super.onLocationResult(result)
+            //!! not null
             if(isTracking.value!!){
                 result?.locations?.let {locations ->
                     for(location in locations){
@@ -185,7 +188,7 @@ class TrackingService : LifecycleService() {
         timeStarted = System.currentTimeMillis()
         isTimerEnabled = true
         //handling starting and stopping of the current time tracking
-        //implement using coroutine as we do not want to call the obeservers all the time - bad practice
+        //implement using coroutine as we do not want to call the observers all the time - bad practice
         CoroutineScope(Dispatchers.Main).launch {
             while (isTracking.value!!){
                 //time difference between now and timeStarted

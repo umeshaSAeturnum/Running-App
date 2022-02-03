@@ -3,11 +3,14 @@ package com.example.runningapp.ui.viewmodels
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import com.example.runningapp.repositories.MainRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 //it is not required to explicitly define provides function for MainRepository
 //as the parameter for MainRepository is a runDAo object and there is provides function for it
 //dagger automatically knows how to creates MainRepository
-class StatisticsViewModel @ViewModelInject constructor(
+@HiltViewModel
+class StatisticsViewModel @Inject constructor(
     val mainRepository: MainRepository
 ) : ViewModel() {
 

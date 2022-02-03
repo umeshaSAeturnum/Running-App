@@ -9,7 +9,7 @@ interface RunDao {
     @Insert(onConflict  = OnConflictStrategy.REPLACE)
     suspend fun insertRun(run : Run)
 
-    @Delete
+        @Delete
     suspend fun deleteRun(run:Run)
 
     @Query("SELECT * FROM `running-table` ORDER BY timestamp DESC")

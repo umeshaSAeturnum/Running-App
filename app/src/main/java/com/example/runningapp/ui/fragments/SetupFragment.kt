@@ -35,6 +35,7 @@ class SetupFragment: Fragment(R.layout.fragment_setup) {
         //default behaviour is to keep the setup fragment in the back stack of the RunFragment
         //(disable navigate back to the setup fragment from RunFragment
         // bcz if we set values then we do not require that option
+        //!isFirstAppOpen -  not the first time app is opened
         if(!isFirstAppOpen){
             val navOptions = NavOptions.Builder()
                 .setPopUpTo(R.id.setupFragment, true)
@@ -76,9 +77,7 @@ class SetupFragment: Fragment(R.layout.fragment_setup) {
             .putBoolean(KEY_FIRST_TIME_TOGGLE, false) // not the first time of launching the application
             .apply()
 
-
         return true
-
     }
 
 }

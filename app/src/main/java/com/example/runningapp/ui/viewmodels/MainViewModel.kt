@@ -7,12 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.runningapp.db.Run
 import com.example.runningapp.other.SortType
 import com.example.runningapp.repositories.MainRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 //it is not required to explicitly define provides function for MainRepository
 //as the parameter for MainRepository is a runDAo object and there is provides function for it
 //dagger automatically knows how to creates MainRepository
-class MainViewModel @ViewModelInject constructor(
+@HiltViewModel
+class MainViewModel @Inject constructor(
     val mainRepository: MainRepository
 ) : ViewModel() {
 
@@ -33,6 +36,7 @@ class MainViewModel @ViewModelInject constructor(
     //merge all the livedata and emit them according to th sort type
     init{
         //the lambda function will execute each time when the runSortedByDate livedata is changed
+        //the actual results of the MediatorLiveData will be runSortedByDate
         runs.addSource(runSortedByDate){ result ->
             if(sortType == SortType.DATE)
                 result?.let {
@@ -82,6 +86,8 @@ class MainViewModel @ViewModelInject constructor(
     fun insertRun(run: Run) = viewModelScope.launch {
         mainRepository.insertRun(run)
     }
+
+
 }
 
 

@@ -51,6 +51,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
 
     private var menu : Menu? = null
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -62,6 +63,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //mapVIew also has a lifecycle methods
         mapView.onCreate(savedInstanceState )
 
         btnToggleRun.setOnClickListener{
@@ -205,7 +207,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
         }
     }
 
-    //this function is to obeserve the data from the servers and  react to those changes
+    //this function is to observe the data from the servers and  react to those changes
     private fun updateTracking(isTracking : Boolean){
         this.isTracking = isTracking
         if(!isTracking && curTimeInMillis > 0L){
@@ -292,7 +294,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
     //this wont connect all the polylines when the device is rotated
     private fun addLatestPolyline(){
         if(pathPoints.isNotEmpty() && pathPoints.last().size > 1){
-            //get the coordinates of second largest point
+            //get the coordinates of second last point
             val preLastLatLng = pathPoints.last()[pathPoints.last().size - 2]
 
             //get the last coordinate of the last polyline
@@ -305,6 +307,8 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             map?.addPolyline(polylineOptions)
         }
     }
+
+    //onSaveInstanceState function helps to save the map so that we do not want to load every time
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         mapView?.onSaveInstanceState(outState)

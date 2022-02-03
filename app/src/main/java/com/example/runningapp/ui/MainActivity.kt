@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    //when the main activity was not detroyed and when we end a pending intent
+    //when the main activity was not detroyed and when we send a pending intent
     //it will not call the onCreate() method
     //instead call this
     override fun onNewIntent(intent: Intent?) {

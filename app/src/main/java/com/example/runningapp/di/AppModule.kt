@@ -14,8 +14,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
@@ -26,7 +26,7 @@ import javax.inject.Singleton
 // When we use ActivityComponent the dependencies will remain until the activity is destroyed
 
 //We are using application component because we need to create single database object for whole application
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 object AppModule {
 
     @Singleton // make sure that it creates only one database instant
